@@ -12,7 +12,7 @@ https://cbeci.org is an online dashboard that visualizes the total bitcoin netwo
 
 The website consists of the main estimates (Image 1). It also has a chart tracking the metric over time (Image 2). Additionally, they provide the methodology and processes for calculating the index (Image 3). A map of mining power use by country is also provided (Image 4).
 
-![Image of methodology](/methods)
+![Image of methodology](/methods.png)
 
 Image 3
 
