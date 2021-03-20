@@ -21,4 +21,16 @@ The following is an excerpt from the CBECI's author recognition page:
 
 ## Analysis of System Architecture
 
+After some digging around the website, it appears as though the data from coinmetrics.io is gathered by the back end and served as json to the front end. They are likely making api calls or using websockets to get data, and then the calculations are made in real time in the front end. ![responses](/) Here is an image showing the responses that are generated every 30 seconds by the updating data. This is how they update the site every 30 seconds. They use the data to construct a lower bound of electricity use, and upper bound of electricity use, and a 'best-guess' that uses the most up to date. 
+
+They also use assumed parameters in the calculations, like the price of electricity. When electricity prices are low, more people will mine bitcoin because of the lower cost. The inverse is true when electricity prices are high. The website enables the user to adjust parameters like the cost of electricity so they can see how electricity use reacts in the model. This is an interaction between the front end and back end and is a part of dynamic programming. It is a feature that makes the service more interesting and interactive.
+
+The latest calculations are then stored in a database in the back end and are used to serve historical data to the various time series charts and mining map.
+
 ## UI/UX Design Critique
+
+The design for the main dashboard is simple and easy to read but it lacks meaningful context. I assume this is intentional on the creator's part; they want the viewer to draw their own conclusions from the data. I understand this, but still think it would be helpful if they provided a comparison to common energy use cases. I can't really conceptualize 151.75 TWh of annualised consumption so it would be helpful for them to mention that Sweden, for example, has around 130 TWh of annualised electricity consumption.
+
+I do like that I can change the price of electricity assumed in the model and view the effects instantly on screen. It helps to make the program more responsive. I also like that the data is updated every 30 seconds because it lets me know that I am getting the latest updates and am not relying on some article written months ago.
+
+The least effective part of the website is the bitcoin mining map. For one, when you click on a symbol it is highlighted, but then no additional data is shown. The symbols are also very similar in size and are very difficult to compare. The time scale bar is also unintuitive and inflexible: I can only select one time period. It is nice that they included a more detailed China map for individual provinces but I would like to see this data for other countries as well. The good part about the map is that it is very simple, so it loads and renders fast. The baselayer is gray and contains bare minimum labeling. The thematic layer is simply the proportional symbol for each country's monthly hashrate.
