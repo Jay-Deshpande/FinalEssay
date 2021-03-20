@@ -1,12 +1,20 @@
 # Cambridge Bitcoin Electricity Consumption Index
 
-![Image of Main Page](/)
+![Image of Main Page](/main.png)
+
+Image 1
 
 ## Introduction
 
 https://cbeci.org is an online dashboard that visualizes the total bitcoin network power. It is hosted by the University of Cambridge Judge Business School's Centre for Alternative Finance. It is difficult to accurately calculate the electricity consumption of the bitcoin network, so the CBECI computes a 'best-guess' estimate based on calculated lower and upper bounds. The organization attempts to provide a constantly-updating, standardized metric that helps viewers understand the bitcoin network's electricity use.
 
+![Image of chart](/chart.png)
+
 The website consists of the main estimates (Image 1). It also has a chart tracking the metric over time (Image 2). A map of mining power use by country is also provided (Image 3). Additionally, they provide the methodology and processes for calculating the index (Image 4).
+
+![Image of map](/map.png)
+
+Image 3
 
 As shown in Image 3, the dashboard includes a web map component to visualize mining electricity use around the world. It is extremely bare bones, without a legend, north indicator, scale indicator, etc.; but it is a simple map of the world that does not attempt to provide any detailed geographic data. Therefore, only the absent legend is detrimental to the understanding provided by the map. The proportional symbols alone do not convey enough information to construct a satisfying visualization. Correspoding values in a legend would help furthur my understanding of the topic. 
 
@@ -21,7 +29,11 @@ The following is an excerpt from the CBECI's author recognition page:
 
 ## Analysis of System Architecture
 
-After some digging around the website, it appears as though the data from coinmetrics.io is gathered by the back end and served as json to the front end. They are likely making api calls or using websockets to get data, and then the calculations are made in real time in the front end. ![responses](/) Here is an image showing the responses that are generated every 30 seconds by the updating data. This is how they update the site every 30 seconds. They use the data to construct a lower bound of electricity use, and upper bound of electricity use, and a 'best-guess' that uses the most up to date. 
+After some digging around the website, it appears as though the data from coinmetrics.io is gathered by the back end and served as json to the front end. They are likely making api calls or using websockets to get data, and then the calculations are made in real time in the front end. 
+
+![Image of response json](/response.png) 
+
+Here is an image showing the responses that are generated every 30 seconds by the updating data. This is how they update the site every 30 seconds. They use the data to construct a lower bound of electricity use, and upper bound of electricity use, and a 'best-guess' that uses the most up to date. 
 
 They also use assumed parameters in the calculations, like the price of electricity. When electricity prices are low, more people will mine bitcoin because of the lower cost. The inverse is true when electricity prices are high. The website enables the user to adjust parameters like the cost of electricity so they can see how electricity use reacts in the model. This is an interaction between the front end and back end and is a part of dynamic programming. It is a feature that makes the service more interesting and interactive.
 
@@ -34,3 +46,9 @@ The design for the main dashboard is simple and easy to read but it lacks meanin
 I do like that I can change the price of electricity assumed in the model and view the effects instantly on screen. It helps to make the program more responsive. I also like that the data is updated every 30 seconds because it lets me know that I am getting the latest updates and am not relying on some article written months ago.
 
 The least effective part of the website is the bitcoin mining map. For one, when you click on a symbol it is highlighted, but then no additional data is shown. The symbols are also very similar in size and are very difficult to compare. The time scale bar is also unintuitive and inflexible: I can only select one time period. It is nice that they included a more detailed China map for individual provinces but I would like to see this data for other countries as well. The good part about the map is that it is very simple, so it loads and renders fast. The baselayer is gray and contains bare minimum labeling. The thematic layer is simply the proportional symbol for each country's monthly hashrate.
+
+# Broader Connections
+
+The CBECI is a service that sits at the crossroads of numerous topics that we discussed this quarter. This is partly because bitcoin itself sits at these crossroads. We can use geography to help explain certain aspects of bitcoin and the effect it has on society. The CBECI mining map helps us see that hundreds of thousands of people across the world are consuming electricity in support of the bitcoin network. We can use this output to calculate carbon emmissions and start to see the true contribution of digital currencies to pollution.
+
+Digital currencies seem to become more and more useable and accepted as time passes. This could widen the digital divide, between those with ready access and exerpience with the digital world and those without. They can also help disrupt traditional power structures like governments and central banks. Certain cryptocurrencies are also private and virtually untraceable, which further protects the privacy of individuals making transactions. 
